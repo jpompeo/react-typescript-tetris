@@ -120,6 +120,27 @@ class Tetris extends React.Component<TetrisProps, TetrisState> {
         ]
       ]
     }
+
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  handleKeyPress(event: React.KeyboardEvent<any>) {
+    //left arrow
+    if (event.keyCode == 37) {
+      this.handleBoardUpdate('left');
+
+      //right arrow
+    } else if (event.keyCode == 39) {
+      this.handleBoardUpdate('right');
+
+      //down arrow
+    } else if (event.keyCode == 40) {
+      this.handleBoardUpdate('down');
+
+      //space bar
+    } else if (event.keyCode == 32) {
+      this.handleBoardUpdate('rotate');
+    }
   }
 
   /**
@@ -437,7 +458,10 @@ class Tetris extends React.Component<TetrisProps, TetrisState> {
 
   render() {
     return (
-      <div className="tetris">
+      <div 
+        className="tetris"
+        onKeyDown={(event) => {this.handleKeyPress(event)}}
+      >
         {/* Tetris board */}
         <TetrisBoard
           field={this.state.field}

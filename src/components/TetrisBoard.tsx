@@ -6,7 +6,7 @@ type TetrisBoardProps = {
   gameOver: boolean,
   score: number,
   level: number,
-  rotate: number
+  rotate: number,
 }
 
 // Create TetrisBoard component
